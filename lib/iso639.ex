@@ -5,7 +5,7 @@ defmodule ISO639 do
   Note about ISO 639-2/B: all Bibliographic codes will be converted to ISO 639-2 codes
   """
 
-  @json_639_2 Application.app_dir(:iso639_elixir, "priv/iso-639/data/iso_639-2.json")
+  @json_639_2 Application.app_dir(:iso639_elixir, "priv/iso_639-2.min.json")
               |> File.read!()
               |> Application.compile_env(:iso639_elixir, :json_library, Jason).decode!()
               |> Enum.uniq_by(fn {_, v} -> v end)
