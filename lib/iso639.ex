@@ -7,7 +7,7 @@ defmodule ISO639 do
 
   @json_639_2 Application.app_dir(:iso639_elixir, "priv/iso-639/data/iso_639-2.json")
               |> File.read!()
-              |> Application.get_env(:iso639_elixir, :json_library, Jason).decode!()
+              |> Application.compile_env(:iso639_elixir, :json_library, Jason).decode!()
               |> Enum.uniq_by(fn {_, v} -> v end)
 
   @list_of_639_2 Enum.map(@json_639_2, fn {_, v} -> Map.get(v, "639-2") end) |> Enum.uniq() |> Enum.sort()
